@@ -9,7 +9,7 @@ namespace Aerolinea
 {
     class BaseDatos
     {
-        readonly string cadena = "Data Source=DESKTOP-7BIOTUK\\SQLEXPRESS"
+        readonly string cadena = "Data Source=DESKTOP-7BIOTUK\\SQLEXPRESS";
 
         public bool ValidarUsuario(string codigo, string clave)
         {
@@ -42,30 +42,7 @@ namespace Aerolinea
             return EsUsuarioValido;
         }
 
-        public DataTable CargarCategorias()
-        {
-            DataTable tabla = new DataTable();
-            try
-            {
-                StringBuilder consultaSQL = new StringBuilder();
-                consultaSQL.Append(" SELECT * FROM CATEGORIAS ");
-
-                using (SqlConnection _conexion = new SqlConnection(cadena))
-                {
-                    _conexion.Open();
-                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
-                    {
-                        comando.CommandType = CommandType.Text;
-                        SqlDataReader dr = comando.ExecuteReader();
-                        tabla.Load(dr);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return tabla;
-        }
+       
 
         public bool InsertarProducto(string codigo, string descripcion, int idCategoria, decimal precio, int existencia, byte[] imagen)
         {
@@ -182,37 +159,7 @@ namespace Aerolinea
             }
         }
 
-        public byte[] SeleccionarImagenProducto(string codigo)
-        {
-            byte[] _imagen = new byte[0];
-            try
-            {
-                StringBuilder consultaSQL = new StringBuilder();
-                consultaSQL.Append(" SELECT IMAGEN FROM PRODUCTOS ");
-                consultaSQL.Append(" WHERE CODIGO = @Codigo; ");
-
-                using (SqlConnection _conexion = new SqlConnection(cadena))
-                {
-                    _conexion.Open();
-                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
-                    {
-                        comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", SqlDbType.NVarChar, 30).Value = codigo;
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.Read())
-                        {
-                            _imagen = (byte[])dr["IMAGEN"];
-                        }
-
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-            return _imagen;
-        }
+       
 
         public bool InsertarUsuario(string codigo, string nombre, string clave, bool estado)
         {
@@ -555,37 +502,9 @@ namespace Aerolinea
             return tabla;
         }
 
-        public Producto GetProductoPorCodigo(string codigo)
-        {
-            Producto miProducto = new Producto();
-            try
-            {
-                StringBuilder consultaSQL = new StringBuilder();
-                consultaSQL.Append(" SELECT CODIGO, DESCRIPCION, PRECIO, EXISTENCIA  FROM PRODUCTOS WHERE CODIGO = @Codigo ");
+      
 
-                using (SqlConnection _conexion = new SqlConnection(cadena))
-                {
-                    _conexion.Open();
-                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
-                    {
-                        comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", SqlDbType.NVarChar, 30).Value = codigo;
-                        SqlDataReader dr = comando.ExecuteReader();
-                        if (dr.Read())
-                        {
-                            miProducto.Codigo = dr["CODIGO"].ToString();
-                            miProducto.Descripcion = dr["DESCRIPCION"].ToString();
-                            miProducto.Precio = Convert.ToDecimal(dr["PRECIO"]);
-                            miProducto.Existencia = Convert.ToInt32(dr["EXISTENCIA"]);
-                        }
-
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return miProducto;
-        }
+               
+        
     }
 }

@@ -29,35 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tegucigalpa (TGU)",
             "Ninguna",
             "Miami Florida (MI)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem(new string[] {
             "San Pedro Sula (SPS)",
             "Ninguna",
             "Miami Florida (MI)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tegucigalpa (TGU)",
             "Atlanta (GA)",
             "Nueva York (NY)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem(new string[] {
             "San Pedro Sula (SPS)",
             "Ninguna",
             "Houston Texas (TX)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miami Florida (MI)",
             "Ninguna",
             "Tegucigalpa (TGU)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miami Florida (MI)",
             "Ninguna",
             "San Pedro Sula (SPS)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem(new string[] {
             "Nueva York (NY)",
             "Atlanta (GA)",
             "Tegucigalpa (TGU)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem(new string[] {
             "Houston Texas (TX)",
             "Ninguna",
             "San Pedro Sula (SPS)"}, -1);
@@ -85,6 +85,7 @@
             this.TxtFechaSalida = new System.Windows.Forms.TextBox();
             this.Label13 = new System.Windows.Forms.Label();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.CmbAbordaje = new System.Windows.Forms.ComboBox();
             this.LbAsiento = new System.Windows.Forms.ListBox();
             this.TxtAsiento = new System.Windows.Forms.TextBox();
             this.LvVuelos = new System.Windows.Forms.ListView();
@@ -102,7 +103,6 @@
             this.TxtEscala = new System.Windows.Forms.TextBox();
             this.CmbDestino = new System.Windows.Forms.ComboBox();
             this.Label4 = new System.Windows.Forms.Label();
-            this.CmbAbordaje = new System.Windows.Forms.ComboBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.Label10 = new System.Windows.Forms.Label();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
@@ -151,7 +151,7 @@
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(108, 3);
+            this.PictureBox1.Location = new System.Drawing.Point(102, -7);
             this.PictureBox1.Name = "PictureBox1";
             this.PictureBox1.Size = new System.Drawing.Size(699, 95);
             this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -169,7 +169,7 @@
             this.GroupBox1.Controls.Add(this.Label3);
             this.GroupBox1.Controls.Add(this.Label2);
             this.GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupBox1.Location = new System.Drawing.Point(12, 104);
+            this.GroupBox1.Location = new System.Drawing.Point(12, 94);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Size = new System.Drawing.Size(253, 186);
             this.GroupBox1.TabIndex = 26;
@@ -203,6 +203,7 @@
             this.RbSi.TabStop = true;
             this.RbSi.Text = "Si";
             this.RbSi.UseVisualStyleBackColor = true;
+            this.RbSi.CheckedChanged += new System.EventHandler(this.RbSi_CheckedChanged);
             // 
             // TxtNombre
             // 
@@ -260,7 +261,7 @@
             this.GroupBox5.Controls.Add(this.Label25);
             this.GroupBox5.Controls.Add(this.TxtFechaSalida);
             this.GroupBox5.Controls.Add(this.Label13);
-            this.GroupBox5.Location = new System.Drawing.Point(288, 104);
+            this.GroupBox5.Location = new System.Drawing.Point(282, 94);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(614, 195);
             this.GroupBox5.TabIndex = 27;
@@ -324,12 +325,14 @@
             this.McRegreso.Location = new System.Drawing.Point(252, 24);
             this.McRegreso.Name = "McRegreso";
             this.McRegreso.TabIndex = 18;
+            this.McRegreso.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.McRegreso_DateChanged);
             // 
             // McSalida
             // 
             this.McSalida.Location = new System.Drawing.Point(4, 24);
             this.McSalida.Name = "McSalida";
             this.McSalida.TabIndex = 17;
+            this.McSalida.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.McSalida_DateChanged);
             // 
             // TxtFechaRegreso
             // 
@@ -367,6 +370,7 @@
             // 
             // GroupBox2
             // 
+            this.GroupBox2.Controls.Add(this.CmbAbordaje);
             this.GroupBox2.Controls.Add(this.LbAsiento);
             this.GroupBox2.Controls.Add(this.TxtAsiento);
             this.GroupBox2.Controls.Add(this.LvVuelos);
@@ -381,15 +385,29 @@
             this.GroupBox2.Controls.Add(this.TxtEscala);
             this.GroupBox2.Controls.Add(this.CmbDestino);
             this.GroupBox2.Controls.Add(this.Label4);
-            this.GroupBox2.Controls.Add(this.CmbAbordaje);
             this.GroupBox2.Controls.Add(this.Label9);
             this.GroupBox2.Controls.Add(this.Label10);
-            this.GroupBox2.Location = new System.Drawing.Point(12, 317);
+            this.GroupBox2.Location = new System.Drawing.Point(12, 286);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(509, 317);
             this.GroupBox2.TabIndex = 28;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Datos de Compra";
+            // 
+            // CmbAbordaje
+            // 
+            this.CmbAbordaje.FormattingEnabled = true;
+            this.CmbAbordaje.Items.AddRange(new object[] {
+            "Tegucigalpa (TGU)",
+            "San Pedro Sula (SPS)",
+            "Miami Florida (MIA)",
+            "Nueva York (NY)",
+            "Houston Texas (TX)"});
+            this.CmbAbordaje.Location = new System.Drawing.Point(5, 193);
+            this.CmbAbordaje.Name = "CmbAbordaje";
+            this.CmbAbordaje.Size = new System.Drawing.Size(122, 21);
+            this.CmbAbordaje.TabIndex = 22;
+            this.CmbAbordaje.SelectedIndexChanged += new System.EventHandler(this.CmbAbordaje_SelectedIndexChanged);
             // 
             // LbAsiento
             // 
@@ -416,14 +434,14 @@
             this.LvVuelos.FullRowSelect = true;
             this.LvVuelos.GridLines = true;
             this.LvVuelos.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem41,
+            listViewItem42,
+            listViewItem43,
+            listViewItem44,
+            listViewItem45,
+            listViewItem46,
+            listViewItem47,
+            listViewItem48});
             this.LvVuelos.Location = new System.Drawing.Point(21, 37);
             this.LvVuelos.Name = "LvVuelos";
             this.LvVuelos.Size = new System.Drawing.Size(358, 127);
@@ -476,6 +494,7 @@
             this.CmbFila.Name = "CmbFila";
             this.CmbFila.Size = new System.Drawing.Size(60, 21);
             this.CmbFila.TabIndex = 18;
+            this.CmbFila.SelectedIndexChanged += new System.EventHandler(this.CmbFila_SelectedIndexChanged);
             // 
             // Label12
             // 
@@ -511,6 +530,7 @@
             this.RbEscala.TabStop = true;
             this.RbEscala.Text = "Vuelo con escala";
             this.RbEscala.UseVisualStyleBackColor = true;
+            this.RbEscala.CheckedChanged += new System.EventHandler(this.RbEscala_CheckedChanged);
             // 
             // RbDirecto
             // 
@@ -522,6 +542,7 @@
             this.RbDirecto.TabStop = true;
             this.RbDirecto.Text = "Vuelo directo";
             this.RbDirecto.UseVisualStyleBackColor = true;
+            this.RbDirecto.CheckedChanged += new System.EventHandler(this.RbDirecto_CheckedChanged);
             // 
             // Label21
             // 
@@ -571,6 +592,7 @@
             this.CmbDestino.Name = "CmbDestino";
             this.CmbDestino.Size = new System.Drawing.Size(147, 21);
             this.CmbDestino.TabIndex = 12;
+            this.CmbDestino.SelectedIndexChanged += new System.EventHandler(this.CmbDestino_SelectedIndexChanged);
             // 
             // Label4
             // 
@@ -580,20 +602,6 @@
             this.Label4.Size = new System.Drawing.Size(94, 13);
             this.Label4.TabIndex = 2;
             this.Label4.Text = "Lugar de Abordaje";
-            // 
-            // CmbAbordaje
-            // 
-            this.CmbAbordaje.FormattingEnabled = true;
-            this.CmbAbordaje.Items.AddRange(new object[] {
-            "Tegucigalpa (TGU)",
-            "San Pedro Sula (SPS)",
-            "Miami Florida (MIA)",
-            "Nueva York (NY)",
-            "Houston Texas (TX)"});
-            this.CmbAbordaje.Location = new System.Drawing.Point(9, 192);
-            this.CmbAbordaje.Name = "CmbAbordaje";
-            this.CmbAbordaje.Size = new System.Drawing.Size(128, 21);
-            this.CmbAbordaje.TabIndex = 11;
             // 
             // Label9
             // 
@@ -617,7 +625,7 @@
             // 
             this.GroupBox3.Controls.Add(this.RbEfectivo);
             this.GroupBox3.Controls.Add(this.RbCredito);
-            this.GroupBox3.Location = new System.Drawing.Point(552, 317);
+            this.GroupBox3.Location = new System.Drawing.Point(540, 295);
             this.GroupBox3.Name = "GroupBox3";
             this.GroupBox3.Size = new System.Drawing.Size(171, 99);
             this.GroupBox3.TabIndex = 29;
@@ -634,6 +642,7 @@
             this.RbEfectivo.TabStop = true;
             this.RbEfectivo.Text = "Efectivo";
             this.RbEfectivo.UseVisualStyleBackColor = true;
+            this.RbEfectivo.CheckedChanged += new System.EventHandler(this.RbEfectivo_CheckedChanged);
             // 
             // RbCredito
             // 
@@ -645,6 +654,7 @@
             this.RbCredito.TabStop = true;
             this.RbCredito.Text = "Tarjeta de credito";
             this.RbCredito.UseVisualStyleBackColor = true;
+            this.RbCredito.CheckedChanged += new System.EventHandler(this.RbCredito_CheckedChanged);
             // 
             // GroupBox6
             // 
@@ -668,7 +678,7 @@
             this.GroupBox6.Controls.Add(this.Label17);
             this.GroupBox6.Controls.Add(this.Label18);
             this.GroupBox6.Controls.Add(this.Label19);
-            this.GroupBox6.Location = new System.Drawing.Point(540, 422);
+            this.GroupBox6.Location = new System.Drawing.Point(534, 400);
             this.GroupBox6.Name = "GroupBox6";
             this.GroupBox6.Size = new System.Drawing.Size(276, 304);
             this.GroupBox6.TabIndex = 30;
@@ -683,6 +693,7 @@
             this.BtnCalcular.TabIndex = 24;
             this.BtnCalcular.Text = "Calcular";
             this.BtnCalcular.UseVisualStyleBackColor = true;
+            this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
             // TxtTotal2
             // 
@@ -846,7 +857,7 @@
             // BtnSalir
             // 
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(873, 554);
+            this.BtnSalir.Location = new System.Drawing.Point(835, 544);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(75, 32);
             this.BtnSalir.TabIndex = 34;
@@ -856,7 +867,7 @@
             // BtnInformacion
             // 
             this.BtnInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInformacion.Location = new System.Drawing.Point(873, 510);
+            this.BtnInformacion.Location = new System.Drawing.Point(835, 500);
             this.BtnInformacion.Name = "BtnInformacion";
             this.BtnInformacion.Size = new System.Drawing.Size(75, 31);
             this.BtnInformacion.TabIndex = 33;
@@ -866,22 +877,24 @@
             // BtnNuevo
             // 
             this.BtnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNuevo.Location = new System.Drawing.Point(873, 466);
+            this.BtnNuevo.Location = new System.Drawing.Point(835, 456);
             this.BtnNuevo.Name = "BtnNuevo";
             this.BtnNuevo.Size = new System.Drawing.Size(75, 32);
             this.BtnNuevo.TabIndex = 32;
             this.BtnNuevo.Text = "Nuevo";
             this.BtnNuevo.UseVisualStyleBackColor = true;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // BtnRegistrar
             // 
             this.BtnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRegistrar.Location = new System.Drawing.Point(873, 422);
+            this.BtnRegistrar.Location = new System.Drawing.Point(835, 412);
             this.BtnRegistrar.Name = "BtnRegistrar";
             this.BtnRegistrar.Size = new System.Drawing.Size(75, 38);
             this.BtnRegistrar.TabIndex = 31;
             this.BtnRegistrar.Text = "Registrar";
             this.BtnRegistrar.UseVisualStyleBackColor = true;
+            this.BtnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
             // GroupBox4
             // 
@@ -889,7 +902,7 @@
             this.GroupBox4.Controls.Add(this.Label24);
             this.GroupBox4.Controls.Add(this.NdMaletas);
             this.GroupBox4.Controls.Add(this.Label5);
-            this.GroupBox4.Location = new System.Drawing.Point(39, 646);
+            this.GroupBox4.Location = new System.Drawing.Point(33, 609);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(385, 91);
             this.GroupBox4.TabIndex = 35;
@@ -907,6 +920,7 @@
             this.CmbPeso.Name = "CmbPeso";
             this.CmbPeso.Size = new System.Drawing.Size(82, 21);
             this.CmbPeso.TabIndex = 17;
+            this.CmbPeso.SelectedIndexChanged += new System.EventHandler(this.CmbPeso_SelectedIndexChanged);
             // 
             // Label24
             // 
@@ -923,6 +937,7 @@
             this.NdMaletas.Name = "NdMaletas";
             this.NdMaletas.Size = new System.Drawing.Size(51, 20);
             this.NdMaletas.TabIndex = 6;
+            this.NdMaletas.ValueChanged += new System.EventHandler(this.NdMaletas_ValueChanged);
             // 
             // Label5
             // 
@@ -937,7 +952,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 749);
+            this.ClientSize = new System.Drawing.Size(923, 749);
             this.Controls.Add(this.GroupBox4);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnInformacion);
@@ -1013,7 +1028,6 @@
         internal System.Windows.Forms.TextBox TxtEscala;
         internal System.Windows.Forms.ComboBox CmbDestino;
         internal System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.ComboBox CmbAbordaje;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.Label Label10;
         internal System.Windows.Forms.GroupBox GroupBox3;
@@ -1049,6 +1063,7 @@
         internal System.Windows.Forms.Label Label24;
         internal System.Windows.Forms.NumericUpDown NdMaletas;
         internal System.Windows.Forms.Label Label5;
+        internal System.Windows.Forms.ComboBox CmbAbordaje;
     }
 }
 
