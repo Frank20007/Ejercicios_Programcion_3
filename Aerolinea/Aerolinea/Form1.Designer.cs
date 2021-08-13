@@ -1,6 +1,6 @@
 ﻿namespace Aerolinea
 {
-    partial class Form1
+    partial class FrmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tegucigalpa (TGU)",
             "Ninguna",
             "Miami Florida (MI)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "San Pedro Sula (SPS)",
             "Ninguna",
             "Miami Florida (MI)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tegucigalpa (TGU)",
             "Atlanta (GA)",
             "Nueva York (NY)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "San Pedro Sula (SPS)",
             "Ninguna",
             "Houston Texas (TX)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miami Florida (MI)",
             "Ninguna",
             "Tegucigalpa (TGU)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miami Florida (MI)",
             "Ninguna",
             "San Pedro Sula (SPS)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
             "Nueva York (NY)",
             "Atlanta (GA)",
             "Tegucigalpa (TGU)"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
             "Houston Texas (TX)",
             "Ninguna",
             "San Pedro Sula (SPS)"}, -1);
@@ -434,14 +434,14 @@
             this.LvVuelos.FullRowSelect = true;
             this.LvVuelos.GridLines = true;
             this.LvVuelos.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48});
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
             this.LvVuelos.Location = new System.Drawing.Point(21, 37);
             this.LvVuelos.Name = "LvVuelos";
             this.LvVuelos.Size = new System.Drawing.Size(358, 127);
@@ -519,6 +519,7 @@
             this.CmbColumna.Name = "CmbColumna";
             this.CmbColumna.Size = new System.Drawing.Size(60, 21);
             this.CmbColumna.TabIndex = 16;
+            this.CmbColumna.SelectedIndexChanged += new System.EventHandler(this.CmbColumna_SelectedIndexChanged);
             // 
             // RbEscala
             // 
@@ -948,7 +949,7 @@
             this.Label5.TabIndex = 5;
             this.Label5.Text = "Ingrese el numero de maletas";
             // 
-            // Form1
+            // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -964,7 +965,7 @@
             this.Controls.Add(this.GroupBox5);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.PictureBox1);
-            this.Name = "Form1";
+            this.Name = "FrmPrincipal";
             this.Text = "Aerolinea";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Linq;
 namespace Aerolinea
 {
-    public partial class Form1 : Form
+    public partial class FrmPrincipal : Form
     {
         decimal impuesto;
         decimal impuesto2;
@@ -20,8 +20,8 @@ namespace Aerolinea
         decimal descuento2;
         decimal total;
         decimal total2;
-       
-        int precio_boleto, precio_boleto2, precio_maleta2, precio_maleta;
+        decimal precio_boleto2;
+        int precio_boleto,  precio_maleta2, precio_maleta;
         int factura, ID_maleta, x;
 
         private void RbSi_CheckedChanged(object sender, EventArgs e)
@@ -39,10 +39,8 @@ namespace Aerolinea
             {
                 MessageBox.Show("La fecha de salida que eligió no está disponible");
                 TxtFechaSalida.Text = "";
-                McRegreso.Enabled = true;
-
-            }
-
+               }
+            McRegreso.Enabled = true;
         }
 
         private void McRegreso_DateChanged(object sender, DateRangeEventArgs e)
@@ -178,9 +176,167 @@ namespace Aerolinea
                     }
 
 
+            //'Restricciones de vuelos nacionales'
+        if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "San Pedro Sula (SPS)") 
+          { MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+}
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
 
 
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
 
+            }
+
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+
+            //'Precios de boletos Honduras a USA desde lugar de abordaje'
+        if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Miami Florida (MIA)")
+           { precio_boleto = 432;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal )23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+                    }
+
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                precio_boleto = 360;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                precio_boleto = 390;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                precio_boleto = 456;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+            TxtBoleto.Text = precio_boleto + " U$";
+            TxtBoleto2.Text = precio_boleto2 + " Lps";
+
+            //'Precios de boletos USA a Honduras desde lugar de abordaje'
+        if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+           { precio_boleto = 432;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+                   }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                precio_boleto = 360;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                precio_boleto = 390;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                precio_boleto = 456;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+
+            TxtBoleto.Text = "0" + " U$";
+            TxtBoleto2.Text = "0" + " Lps";
 
 
 
@@ -189,6 +345,226 @@ namespace Aerolinea
 
         private void CmbDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //'Indicación de escalas'
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                TxtEscala.Text = "Atlanta (GA)";
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                TxtEscala.Text = "Atlanta (GA)";
+
+            }
+
+            //'Restricciones mismos lugares de abordaje y destino'
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+
+            {
+                MessageBox.Show("El lugar de abordaje no puede ser el mismo que el lugar de destino");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+            }
+
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                MessageBox.Show("El lugar de abordaje no puede ser el mismo que el lugar de destino");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Miami Florida (MIA)")
+
+            {
+                MessageBox.Show("El lugar de abordaje no puede ser el mismo que el lugar de destino");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                MessageBox.Show("El lugar de abordaje no puede ser el mismo que el lugar de destino");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+            }
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                MessageBox.Show("El lugar de abordaje no puede ser el mismo que el lugar de destino");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+            }
+
+
+            //'Restricciones de vuelos nacionales'
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                MessageBox.Show("Lo sentimos en este momento solo contamos con el servicio de vuelos internacionales");
+                TxtEscala.Text = "";
+                TxtBoleto.Text = "0" + " U$";
+                TxtBoleto2.Text = "0" + " Lps";
+
+            }
+
+
+            //'Precios de boletos Honduras a USA desde lugar de abordaje'
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                precio_boleto = 432;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Miami Florida (MIA)")
+            {
+                precio_boleto = 360;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+            if (CmbAbordaje.Text == "Tegucigalpa (TGU)" & CmbDestino.Text == "Nueva York (NY)")
+            {
+                precio_boleto = 390;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+
+            if (CmbAbordaje.Text == "San Pedro Sula (SPS)" & CmbDestino.Text == "Houston Texas (TX)")
+            {
+                precio_boleto = 456;
+
+                //'Cambio de Dolar a Lempira'
+                cambio_dolar = (decimal)23.67;
+                precio_boleto2 = precio_boleto * cambio_dolar;
+
+                TxtEscala.Text = "Ninguna";
+
+            }
+
+            
+
+            //'Precios de boletos USA a Honduras desde lugar de abordaje'
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                precio_boleto = 432;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+            if (CmbAbordaje.Text == "Miami Florida (MIA)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                precio_boleto = 360;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+            if (CmbAbordaje.Text == "Nueva York (NY)" & CmbDestino.Text == "Tegucigalpa (TGU)")
+            {
+                precio_boleto = 390;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+            if (CmbAbordaje.Text == "Houston Texas (TX)" & CmbDestino.Text == "San Pedro Sula (SPS)")
+            {
+                precio_boleto = 456;
+                precio_boleto2 = 0;
+                impuesto2 = 0;
+                TxtEscala.Text = "Ninguna";
+            }
+
+
+            
+
+
             CmbColumna.Enabled = true;
             CmbFila.Enabled = true;
         }
@@ -201,7 +577,7 @@ namespace Aerolinea
         RbEfectivo.Enabled = true;
         }
 
-        public Form1()
+        public FrmPrincipal()
         {
             InitializeComponent();
         }
@@ -209,59 +585,13 @@ namespace Aerolinea
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            
-            TxtNombre.Text = "";
-            RbSi.Checked = false ;
-            TxtEdad.Text = "";
-            McSalida.SelectionEnd = McSalida.TodayDate;
-            McRegreso.SelectionEnd = McRegreso.TodayDate;
-            McSalida.SelectionStart = McRegreso.TodayDate;
-        McRegreso.SelectionStart = McRegreso.SelectionEnd;
-        TxtFechaSalida.Text = "";
-            TxtFechaRegreso.Text = "";
-            RbDirecto.Checked = false ;
-            RbEscala.Checked = false ;
-            RbDirecto.Enabled = false ;
-            RbEscala.Enabled = false ;
-            LvVuelos.Enabled = false ;
-            LvVuelos.HideSelection = true ;
-            CmbAbordaje.Enabled = false ;
-            CmbDestino.Enabled = false ;
-            TxtEdad.Enabled = false ;
-            CmbColumna.Text = "";
-            CmbFila.Text = "";
-            CmbColumna.Enabled = false ;
-            CmbFila.Enabled = false ;
-            NdMaletas.Enabled = false ;
-            CmbPeso.Enabled = false ;
-            RbCredito.Checked = false ;
-            RbCredito.Enabled = false ;
-            RbEfectivo.Checked = false ;
-            RbEfectivo.Enabled = false ;
-            BtnCalcular.Enabled = false ;
 
+            LimpiarControles();
 
-            CmbAbordaje.Text = "Seleccionar";
-            TxtEscala.Text = "";
-            CmbDestino.Text = "Seleccionar";
-            TxtAsiento.Text = "";
-            NdMaletas.Value = 0;
-            CmbPeso.Text = "Seleccionar";
-            TxtBoleto.Text = "0 U$";
-            TxtBoleto2.Text = "0 Lps";
-            TxtMaletas.Text = "0 U$";
-            TxtMaletas2.Text = "0 Lps";
-            TxtImpuesto.Text = "0 U$";
-            TxtImpuesto2.Text = "0 Lps";
-            TxtSubTotal.Text = "0 U$";
-            TxtSubTotal2.Text = "0 Lps";
-            TxtDescuento.Text = "0 U$";
-            TxtDescuento2.Text = "0 Lps";
-            TxtTotal.Text = "0 U$";
-            TxtTotal2.Text = "0 Lps";
-            
-            TxtNombre.Enabled = true ;
-            RbSi.Enabled = true ;
+        }
+
+        private void CmbColumna_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 
@@ -332,8 +662,12 @@ namespace Aerolinea
               }
 
 
-        }
-       
+            TxtTotal.Text = total + " U$";
+            TxtTotal2.Text = total2 + " Lps";
+            BtnRegistrar.Enabled = true;
+                }
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -395,5 +729,66 @@ namespace Aerolinea
 
             
         }
+
+
+        private void LimpiarControles()
+        {
+            TxtNombre.Text = "";
+            RbSi.Checked = false;
+            TxtEdad.Text = "";
+            McSalida.SelectionEnd = McSalida.TodayDate;
+            McRegreso.SelectionEnd = McRegreso.TodayDate;
+            McSalida.SelectionStart = McRegreso.TodayDate;
+            McRegreso.SelectionStart = McRegreso.SelectionEnd;
+            TxtFechaSalida.Text = "";
+            TxtFechaRegreso.Text = "";
+            RbDirecto.Checked = false;
+            RbEscala.Checked = false;
+            RbDirecto.Enabled = false;
+            RbEscala.Enabled = false;
+            LvVuelos.Enabled = false;
+            LvVuelos.HideSelection = true;
+            CmbAbordaje.Enabled = false;
+            CmbDestino.Enabled = false;
+            TxtEdad.Enabled = false;
+            CmbColumna.Text = "";
+            CmbFila.Text = "";
+            CmbColumna.Enabled = false;
+            CmbFila.Enabled = false;
+            NdMaletas.Enabled = false;
+            CmbPeso.Enabled = false;
+            RbCredito.Checked = false;
+            RbCredito.Enabled = false;
+            RbEfectivo.Checked = false;
+            RbEfectivo.Enabled = false;
+            BtnCalcular.Enabled = false;
+
+
+            CmbAbordaje.Text = "Seleccionar";
+            TxtEscala.Text = "";
+            CmbDestino.Text = "Seleccionar";
+            TxtAsiento.Text = "";
+            NdMaletas.Value = 0;
+            CmbPeso.Text = "Seleccionar";
+            TxtBoleto.Text = "0 U$";
+            TxtBoleto2.Text = "0 Lps";
+            TxtMaletas.Text = "0 U$";
+            TxtMaletas2.Text = "0 Lps";
+            TxtImpuesto.Text = "0 U$";
+            TxtImpuesto2.Text = "0 Lps";
+            TxtSubTotal.Text = "0 U$";
+            TxtSubTotal2.Text = "0 Lps";
+            TxtDescuento.Text = "0 U$";
+            TxtDescuento2.Text = "0 Lps";
+            TxtTotal.Text = "0 U$";
+            TxtTotal2.Text = "0 Lps";
+
+            TxtNombre.Enabled = true;
+            RbSi.Enabled = true;
+        }
+
+
+
+
     }
 }
