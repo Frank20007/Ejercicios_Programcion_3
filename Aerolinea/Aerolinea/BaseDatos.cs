@@ -19,7 +19,7 @@ namespace Aerolinea
             {
                 StringBuilder consultaSQL = new StringBuilder();
                 consultaSQL.Append(" SELECT 1 FROM USUARIOS ");
-                consultaSQL.Append(" WHERE CODIGO = @Codigo AND CLAVE = @Clave AND ESTAACTIVO = 1; ");
+                consultaSQL.Append(" WHERE CODIGO = @Codigo AND CLAVE = @Clave; ");
 
                 using (SqlConnection _conexion = new SqlConnection(cadena))
                 {
@@ -201,12 +201,100 @@ namespace Aerolinea
             return nombre;
         }
 
-       
-       
 
-      
 
-               
-        
+
+        public DataTable ListarPasajeros()
+        {
+            DataTable tabla = new DataTable();
+            try
+            {
+                StringBuilder consultaSQL = new StringBuilder();
+                consultaSQL.Append(" SELECT *  FROM REGISTRO DE DATOS GENERALES ");
+
+                using (SqlConnection _conexion = new SqlConnection(cadena))
+                {
+                    _conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        SqlDataReader dr = comando.ExecuteReader();
+                        tabla.Load(dr);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return tabla;
+        }
+
+
+
+
+
+
+
+        public bool EditarPasajeros(string nombre, string edad, bool fechasalida, bool fecharegreso)
+        {
+            try
+            {
+                StringBuilder consultaSQL = new StringBuilder();
+                consultaSQL.Append(" UPDATE REGISTRO DE DATOS GENERALES ");
+                consultaSQL.Append(" SET NOMBRE = @Nombre, EDAD = @edad, FECHA DE SALIDA = @fechasalida, FECHA DE REGRESO = @fecharegreso ");
+                
+
+                using (SqlConnection _conexion = new SqlConnection(cadena))
+                {
+                    _conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        comando.Parameters.Add("@Nombre", SqlDbType.NVarChar, 30).Value = nombre ;
+                        comando.Parameters.Add("@edad", SqlDbType.NVarChar, 50).Value = edad ;
+                        comando.Parameters.Add("@fechasalida", SqlDbType.NVarChar, 30).Value = fechasalida;
+                        comando.Parameters.Add("@fecharegreso", SqlDbType.Bit).Value = fecharegreso;
+                        comando.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+        }
+
+        public bool InsertarPasajero(string nombre, string edad, string  fechasalida, string  fecharegreso)
+        {
+            try
+            {
+                StringBuilder consultaSQL = new StringBuilder();
+                consultaSQL.Append(" INSERT INTO REGISTRO DE DATOS GENERALES ");
+                consultaSQL.Append(" VALUES (@Nombre, @edad, @fechasalida, @Fecharegreso); ");
+
+                using (SqlConnection _conexion = new SqlConnection(cadena))
+                {
+                    _conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        comando.Parameters.Add("@Nombre", SqlDbType.NVarChar, 30).Value = nombre ;
+                        comando.Parameters.Add("@edad", SqlDbType.NVarChar, 80).Value = edad ;
+                        comando.Parameters.Add("@fechasalida", SqlDbType.Int).Value = fechasalida ;
+                        comando.Parameters.Add("@fecharegreso", SqlDbType.Decimal).Value = fecharegreso ;
+                        
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
     }
 }

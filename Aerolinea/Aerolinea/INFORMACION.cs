@@ -14,5 +14,16 @@ namespace Aerolinea
         {
             InitializeComponent();
         }
+        BaseDatos bd = new BaseDatos();
+
+        private void INFORMACION_Load(object sender, EventArgs e)
+        {
+            ListarPasajeros();
+        }
+
+        private void ListarPasajeros()
+        {
+            DgInformación.DataSource = bd.ListarPasajeros();  
+        }
     }
 }

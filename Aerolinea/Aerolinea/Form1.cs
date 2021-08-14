@@ -594,11 +594,12 @@ namespace Aerolinea
         {
 
         }
-
+        BaseDatos bd = new BaseDatos();
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
-            Registro miRegistro = new Registro();
-        }
+            bool inserto = bd.InsertarPasajero(TxtNombre.Text, TxtEdad.Text,Convert.ToString  ( McSalida.SelectionStart.Date),Convert.ToString (  McRegreso.SelectionStart.Date));
+            bd.ListarPasajeros();
+}
 
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
