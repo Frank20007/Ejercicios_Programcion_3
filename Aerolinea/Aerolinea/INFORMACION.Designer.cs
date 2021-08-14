@@ -1,6 +1,6 @@
 ﻿namespace Aerolinea
 {
-    partial class INFORMACION
+    partial class FrmInformacion
     {
         /// <summary>
         /// Required designer variable.
@@ -51,14 +51,14 @@
             this.Label6.TabIndex = 141;
             this.Label6.Text = "Registro de Datos General";
             // 
-            // INFORMACION
+            // FrmInformacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 347);
             this.Controls.Add(this.Label6);
             this.Controls.Add(this.DgInformación);
-            this.Name = "INFORMACION";
+            this.Name = "FrmInformacion";
             this.Text = "INFORMACION";
             this.Load += new System.EventHandler(this.INFORMACION_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgInformación)).EndInit();

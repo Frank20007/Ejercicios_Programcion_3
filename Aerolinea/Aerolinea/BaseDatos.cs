@@ -272,7 +272,7 @@ namespace Aerolinea
             {
                 StringBuilder consultaSQL = new StringBuilder();
                 consultaSQL.Append(" INSERT INTO REGISTRO DE DATOS GENERALES ");
-                consultaSQL.Append(" VALUES (@Nombre, @edad, @fechasalida, @Fecharegreso); ");
+                consultaSQL.Append(" VALUES (@nombre, @edad, @fechasalida, @fecharegreso);");
 
                 using (SqlConnection _conexion = new SqlConnection(cadena))
                 {
@@ -280,10 +280,10 @@ namespace Aerolinea
                     using (SqlCommand comando = new SqlCommand(consultaSQL.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Nombre", SqlDbType.NVarChar, 30).Value = nombre ;
+                        comando.Parameters.Add("@nombre", SqlDbType.NVarChar, 30).Value = nombre ;
                         comando.Parameters.Add("@edad", SqlDbType.NVarChar, 80).Value = edad ;
-                        comando.Parameters.Add("@fechasalida", SqlDbType.Int).Value = fechasalida ;
-                        comando.Parameters.Add("@fecharegreso", SqlDbType.Decimal).Value = fecharegreso ;
+                        comando.Parameters.Add("@fechasalida", SqlDbType.NChar,40 ).Value = fechasalida ;
+                        comando.Parameters.Add("@fecharegreso", SqlDbType.NChar,40 ).Value = fecharegreso ;
                         
                         return true;
                     }

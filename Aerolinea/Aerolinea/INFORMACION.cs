@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Aerolinea
 {
-    public partial class INFORMACION : Syncfusion.Windows.Forms.Office2010Form
+    public partial class FrmInformacion : Syncfusion.Windows.Forms.Office2010Form
     {
-        public INFORMACION()
+        public FrmInformacion()
         {
             InitializeComponent();
         }
